@@ -1,3 +1,8 @@
 tools/koplay.json
 __pycache__/
 .emulator/
+
+# deskdeck
+references/
+koplay.json
+dist/
