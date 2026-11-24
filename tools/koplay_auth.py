@@ -15,6 +15,7 @@ import json
 import secrets
 import shutil
 import sys
+import time
 import urllib.parse
 import urllib.request
 import webbrowser
@@ -117,7 +118,14 @@ def main():
     if "refresh_token" not in tokens:
         sys.exit(f"Unexpected response: {tokens}")
 
-    OUT_FILE.write_text(json.dumps({"client_id": client_id, "refresh_token": tokens["refresh_token"]}))
+    # deskdeck: also record when the user authorized. Spotify refresh tokens expire 6 months
+    # after the original authorization and the token endpoint never tells us when, so the
+    # device needs this to warn before it happens. KoPlay keeps unknown keys when it rewrites the file.
+    OUT_FILE.write_text(json.dumps({
+        "client_id": client_id,
+        "refresh_token": tokens["refresh_token"],
+        "authorized_at": int(time.time()),
+    }))
     print(f"Saved: {OUT_FILE}")
 
     if KINDLE_SETTINGS.is_dir():
