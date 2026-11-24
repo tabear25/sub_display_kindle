@@ -1,3 +1,5 @@
+> **DeskDeck fork** — 日本語の説明・導入手順は [README.ja.md](README.ja.md) にあります。
+
 # KoPlay
 
 **Spotify on your e-reader.** A [KOReader](https://github.com/koreader/koreader) plugin that shows what's playing on Spotify, lets you skip and pause without leaving your book, and browse your playlists from the e-ink screen.
